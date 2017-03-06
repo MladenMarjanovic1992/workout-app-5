@@ -35,6 +35,7 @@ guard :rspec, cmd: "bin/rspec" do
   watch(rspec.spec_helper) { rspec.spec_dir }
   watch(rspec.spec_support) { rspec.spec_dir }
   watch(rspec.spec_files)
+  
 
   # Ruby files
   ruby = dsl.ruby
@@ -71,4 +72,7 @@ guard :rspec, cmd: "bin/rspec" do
   watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$}) do |m|
     Dir[File.join("**/#{m[1]}.feature")][0] || "spec/acceptance"
   end
+  
+  watch(rails.view_dirs) { |m| "spec/features/#{m[1]}" }
+  
 end
