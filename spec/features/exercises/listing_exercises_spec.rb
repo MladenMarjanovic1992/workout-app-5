@@ -25,4 +25,15 @@ RSpec.feature "Listing Exercises" do
     
   end
   
+  scenario "shows no exercises if there are none" do
+    
+    @mladen.exercises.delete_all
+    
+    visit "/"
+    click_link "My Lounge"
+    
+    expect(page).to have_content("No Workouts yet")
+    
+  end
+  
 end
