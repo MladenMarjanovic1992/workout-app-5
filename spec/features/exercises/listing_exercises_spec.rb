@@ -8,6 +8,7 @@ RSpec.feature "Listing Exercises" do
     
     @e1 = @mladen.exercises.new(duration_in_min: 50, workout: "running", workout_date: Date.today)
     @e2 = @mladen.exercises.new(duration_in_min: 60, workout: "cardio", workout_date: 2.days.ago)
+    @e3 = @mladen.exercises.new(duration_in_min: 70, workout: "wight lifting", workout_date: 8.days.ago)
   end
   
   scenario "shows user workouts for last 7 days" do
@@ -22,6 +23,10 @@ RSpec.feature "Listing Exercises" do
     expect(page).to have_content(@e2.duration_in_min)
     expect(page).to have_content(@e2.workout)
     expect(page).to have_content(@e2.workout_date)
+    
+    expect(page).not_to have_content(@e3.duration_in_min)
+    expect(page).not_to have_content(@e3.workout)
+    expect(page).not_to have_content(@e3.workout_date)
     
   end
   
