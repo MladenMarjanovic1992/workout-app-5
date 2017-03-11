@@ -1,16 +1,19 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-
+#front-page {
+  padding: 0 50px;
+}
 // navbar styling
 .navbar {
   background: orange;
+  height: 85px;
 }
 
 .navbar-header a.navbar-brand {
   color: #ffffff;
   padding-top: 25px;
-  padding-bottom: 50px;
+  padding-bottom: 25px;
   font-size: 150%;
   font-weight: bold;
 }
@@ -19,9 +22,24 @@
   color: #ff0000;
 }
 
-.nav > li > a {
-  padding-top: 25px;
-  padding-bottom: 30px;
+.nav > li {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: inline;
+  float: left;
+}
+
+.navbar-right {
+  border: none;
+  height: 80px;
+}
+
+ul {
+  height: 80px;
+}
+
+ul li {
+  margin-top: -10px;
 }
 
 .navbar-default .navbar-nav > .active > a {
@@ -54,6 +72,12 @@
 
 .navbar-form {
   margin-top: 20px;
+}
+
+// Jumbotron
+
+.jumbotron {
+  padding: 80px 20px;
 }
 
 // Devise Error Messages
