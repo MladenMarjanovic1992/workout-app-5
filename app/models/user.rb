@@ -18,9 +18,9 @@ class User < ApplicationRecord
     name_array = name.split(" ")
     
     if name_array.size == 1
-      where("first_name LIKE ? or last_name LIKE ?", "#{name_array[0]}", "#{name_array[0]}").order(:first_name)
+      where("first_name LIKE ? or last_name LIKE ?", "%#{name_array[0]}%", "%#{name_array[0]}%").order(:first_name)
     else
-      where("first_name LIKE ? or first_name LIKE ? or last_name LIKE or last_name LIKE ?", "#{name_array[0]}", "#{name_array[1]}", "#{name_array[0]}", "#{name_array[1]}").order(:first_name)
+      where("first_name LIKE ? or first_name LIKE ? or last_name LIKE ? or last_name LIKE ?", "%#{name_array[0]}%", "%#{name_array[1]}%", "%#{name_array[0]}%", "%#{name_array[1]}%").order(:first_name)
     end
   end
 end
