@@ -2,6 +2,8 @@ class User < ApplicationRecord
   has_many :exercises
   has_many :friendships
   has_many :friends, through: :friendships, class_name: "User"
+  has_one :room
+  after_create :create_room
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -33,5 +35,12 @@ class User < ApplicationRecord
   def current_friendships(friend)
     friendships.where(friend: friend)[0]
   end
+  
+  private
+  
+    def create_room
+      room_name = self.full_name.split.join(" ")
+      Room.create(name: room_name, user_id: self.id)
+    end
   
 end
