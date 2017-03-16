@@ -34,7 +34,7 @@ RSpec.feature "Sign up user" do
     
     user = User.last
     room = user.room
-    room_name = user.full_name.split.join(" ") 
+    room_name = user.full_name.split.join("-") 
     
     expect(room.name).to eq(room_name)
     
