@@ -1,13 +1,16 @@
-<div class="row" id="front-page">
-  <div class="col-md-12">
-    <% flash.each do |key, msg| %>
-      <div class="text-center alert 
-                  alert-<%= key == 'notice' ? 'success' : 'danger' %>">
-        <%= msg %>
-      </div>
-    <% end %>
-      
-    <%= yield %>
+<div class="<%= content_for?(:whole_page) ? 'container-fluid' : 'container' %>">
+  <div class="row">
+    <div class="col-md-12">
+      <% flash.each do |key, msg| %>
+        <div class="text-center alert 
+                    alert-<%= key == 'notice' ? 'success' : 'danger' %>">
+          <%= msg %>
+        </div>
+      <% end %>
+        
+      <%= yield %>
+      <%= yield :whole_page %>
+    </div>
+    
   </div>
-  
 </div>
